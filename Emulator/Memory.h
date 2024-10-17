@@ -1,5 +1,6 @@
 #pragma once
 
+
 class Memory
 {
 	using Byte = unsigned char; // 1-byte
@@ -12,10 +13,8 @@ public:
 	void init();
 
 	// Operators
-	// Read
-	Byte operator[](u32 address) const;
-	// Write
-	Byte& operator[](u32 address);
+	Byte operator[](u32 address) const; // Read
+	Byte& operator[](u32 address); // Write
 
 
 };

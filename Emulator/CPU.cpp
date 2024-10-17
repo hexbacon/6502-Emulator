@@ -17,12 +17,19 @@ void CPU::reset(Memory& mem)
 	mem.init();
 	return;
 }
-
+/* Execute
+* This function executes an instruction based on the opcode
+* @params:
+*	Unsigned Int: cycles
+*	Memory Object: mem
+*/
 void CPU::execute(u32 cycles, Memory& mem)
 {
 	while (cycles > 0)
 	{
+		// Fetch Instruction
 		Byte instruction = fetch_byte_ins(cycles, mem);
+		// Execute Instruction
 		switch (instruction)
 		{
 		case INS_LDA_IM:
@@ -37,6 +44,15 @@ void CPU::execute(u32 cycles, Memory& mem)
 			Byte zero_page_address = fetch_byte_ins(cycles, mem);
 			A = read_byte(cycles, zero_page_address, mem);
 			lda_set_status();
+		}
+		case INS_LDA_ZPX:
+		{
+			Byte zero_page_address = fetch_byte_ins(cycles, mem);
+			zero_page_address += X;
+			cycles--;
+			A = read_byte(cycles, zero_page_address, mem);
+			lda_set_status();
+
 		}
 		default:
 		{
@@ -78,7 +94,9 @@ Byte CPU::read_byte(u32& cycles, Byte address, Memory& mem)
 	cycles--;
 	return data;
 }
-
+/*Set ZN Status Flag
+* This function sets the Zero and Negative status flags based on the value of the Accumulator
+*/
 void CPU::lda_set_status()
 {
 	Z = (A == 0);

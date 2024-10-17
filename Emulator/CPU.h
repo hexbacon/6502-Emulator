@@ -25,7 +25,10 @@ public:
 	Byte N : 1;
 
 	// Opcode
-	static constexpr Byte INS_LDA_IM = 0xA9, INS_LDA_ZP = 0xA5;
+	static constexpr Byte 
+		INS_LDA_IM = 0xA9, 
+		INS_LDA_ZP = 0xA5,
+		INS_LDA_ZPX = 0xB5;
 
 	// Methods
 	void reset(Memory& mem); // Resets the CPU
