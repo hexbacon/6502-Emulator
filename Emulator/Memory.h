@@ -16,6 +16,4 @@ public:
 	// Operators
 	Byte operator[](u32 address) const; // Read
 	Byte& operator[](u32 address); // Write
-
-
 };

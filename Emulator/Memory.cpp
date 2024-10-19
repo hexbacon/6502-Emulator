@@ -15,7 +15,6 @@ void Memory::init()
 	}
 	return;
 }
-
 /* Read Word
 * This function writes a 2 bytes to the memory. The 6502 is little endian so the least significant byte is stored first. 
 * @params:
@@ -33,7 +32,6 @@ void Memory::write_word(u32& cycles, Word address, Word value)
 	cycles -= 2;
 	return;
 }
-
 // Read a byte from memory
 Byte Memory::operator[](u32 address) const
 {

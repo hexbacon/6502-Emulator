@@ -76,7 +76,6 @@ void CPU::execute(u32 cycles, Memory& mem)
 	}
 	return;
 }
-
 /*Fetch Intruction
 * This function fetches an instruction from memory and updates the program counter
 * @params:
@@ -107,10 +106,6 @@ Byte CPU::read_byte(u32& cycles, Byte address, Memory& mem)
 	cycles--;
 	return data;
 }
-/*Set ZN Status Flag
-* This function sets the Zero and Negative status flags based on the value of the Accumulator
-*/
-
 /*Fetch Word Instruction
 * This function fetches a word from memory and updates the program counter. The 6502 is little endian so the least significant byte is stored first.
 * @params:
@@ -135,7 +130,6 @@ Word CPU::fetch_word_ins(u32& cycles, Memory& mem)
 }
 /*Set ZN Status Flag
 * This function sets the Zero and Negative status flags based on the value of the Accumulator
-
 */
 void CPU::lda_set_status()
 {
