@@ -11,6 +11,7 @@ public:
 	Byte Data[MAX_MEM];
 	// Methods
 	void init();
+	void write_word(u32& cycles, Word address, Word value);
 
 	// Operators
 	Byte operator[](u32 address) const; // Read

@@ -3,7 +3,6 @@
 #include <iostream>
 
 /*Emualor for the 6502 CPU*/
-
 class CPU
 {
 	using Byte = unsigned char; // 1-byte
@@ -25,16 +24,18 @@ public:
 	Byte N : 1;
 
 	// Opcode
-	static constexpr Byte 
-		INS_LDA_IM = 0xA9, 
+	static constexpr Byte
+		INS_LDA_IM = 0xA9,
 		INS_LDA_ZP = 0xA5,
-		INS_LDA_ZPX = 0xB5;
+		INS_LDA_ZPX = 0xB5,
+		INS_JSR = 0x20;
 
 	// Methods
 	void reset(Memory& mem); // Resets the CPU
 	void execute(u32 cycles, Memory& mem); // Executes an instruction
 	void lda_set_status(); // Sets the  Z,N flags 
 	Byte fetch_byte_ins(u32& cycles, Memory& mem); // Fetches  instructions
+	Word fetch_word_ins(u32& cycles, Memory& mem); // Fetches  instructions
 	Byte read_byte(u32& cycles, Byte address, Memory& mem); // Reads from memory
 
 };
